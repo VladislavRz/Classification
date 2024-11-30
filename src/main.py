@@ -100,12 +100,11 @@ if __name__ == '__main__':
 
     # Установка различных праметров для поиска наилучших
     lr = GridSearchCV(LogisticRegression(), {'max_iter': [100, 200], 'C': [1.0, 0.3]})
-    gnb = GridSearchCV(GaussianNB(),  {'var_smoothing': np.logspace(0, -9, num=100),
-                                       'priors': [0.1, 0.9]})
+    gnb = GridSearchCV(GaussianNB(),  {'var_smoothing': np.logspace(0, -9, num=20)})
 
     # Тренировка моделей
     lr = train_model(lr, lr_name, x_train, y_train)
-    gnb = train_model(GaussianNB(), gnb_name, x_train, y_train)
+    gnb = train_model(gnb, gnb_name, x_train, y_train)
     rf = train_model(RandomForestClassifier(), rf_name, x_train, y_train)
 
     # Вывод результатов
